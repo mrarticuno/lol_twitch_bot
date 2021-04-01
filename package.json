@@ -5,11 +5,12 @@
   "main": "bot.js",
   "bin": "bin.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "pkg ."
   },
   "dependencies": {
     "tmi.js": "1.7.5",
-    "axios": "^0.21.1"
+    "axios": "^0.21.1",
+    "pkg": "4.5.1"
   },
   "keywords": [],
   "author": "",

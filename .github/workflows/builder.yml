@@ -4,7 +4,6 @@ on: [push]
 
 jobs:
   build:
-
     runs-on: ${{ matrix.os }}
 
     strategy:
@@ -26,12 +25,9 @@ jobs:
       - name: Install depedencies
         run: |
           npm install
-      - name: Install PKG
-        run: |
-          npm i -g pkg
       - name: Publish
         run: |
-          pkg .
+          npm run build
       - name: Cleanup artifacts
         run: |
           npx rimraf "dist/!(*.exe|*.deb|*.AppImage|*.dmg)"
@@ -39,7 +35,7 @@ jobs:
         uses: actions/upload-artifact@v1
         with:
           name: ${{ matrix.os }}
-          path: dist
+          path: ../dist
       - name: Release
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
