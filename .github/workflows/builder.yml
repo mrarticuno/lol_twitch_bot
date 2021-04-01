@@ -11,13 +11,8 @@ jobs:
         os: [macOS-10.14, windows-2016, ubuntu-18.04]
 
     steps:
-      - name: Context
-        env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
-        run: echo "$GITHUB_CONTEXT"
-      - uses: actions/checkout@v1
-        with:
-          fetch-depth: 1
+       - name: Checkout
+        uses: actions/checkout@v2
       - name: Use Node.js 10.x
         uses: actions/setup-node@v1
         with:
@@ -29,8 +24,15 @@ jobs:
         run: |
           npm run build
       - name: Cleanup artifacts
+        if: matrix.os != 'windows-latest'
         run: |
-          npx rimraf "dist/!(*.exe|*.deb|*.AppImage|*.dmg)"
+          mkdir artifacts
+          mv "dist/(*.exe,*.deb,*.AppImage,*.dmg)" artifacts || true
+      - name: Cleanup artifacts Win
+        if: matrix.os == 'windows-latest'
+        run: |
+          mkdir artifacts
+          mv dist/*.exe artifacts
       - name: Upload artifacts
         uses: actions/upload-artifact@v2
         with:
@@ -40,6 +42,6 @@ jobs:
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
         with:
-          files: "dist/**"
+          files: "dist/*"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
