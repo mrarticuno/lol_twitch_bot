@@ -11,7 +11,7 @@ jobs:
         os: [macOS-10.14, windows-2016, ubuntu-18.04]
 
     steps:
-       - name: Checkout
+      - name: Checkout
         uses: actions/checkout@v2
       - name: Use Node.js 10.x
         uses: actions/setup-node@v1
