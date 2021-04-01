@@ -26,4 +26,5 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: npm i -g pkg
+    - run: npm i
     - run: pkg .
