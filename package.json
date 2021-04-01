@@ -12,6 +12,9 @@
     "axios": "^0.21.1",
     "pkg": "4.5.1"
   },
+  "pkg": {
+    "outputPath": "dist"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC"
