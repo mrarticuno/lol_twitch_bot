@@ -38,9 +38,10 @@ module.exports = function () {
     // If the command is known, let's execute it
     if (command.includes("!runas")) {
       let summonerName = command.replace("!runas ", "");
+      summonerName = command.replace("!runas", "");
       summonerName = summonerName.replace(/\"/g, "");
-      if (command.length === 0) {
-        client.say('Meh, o comando é !runas "NomeDoInvocador"');
+      if (summonerName.length == 0) {
+        client.say(target, '/me Meh, o comando é !runas "NomeDoInvocador"');
       } else {
         runeCommand(client, target, summonerName);
         console.log(`* Executed !runas command`);

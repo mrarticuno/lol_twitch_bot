@@ -15,7 +15,11 @@ function loadUserData(SummonerName) {
   return new Promise((resolve, reject) => {
     axios({
       method: "get",
-      url: `https://${CONFIG.REGION_TAGLINE}.api.riotgames.com/lol/summoner/v4/summoners/by-name/${SummonerName}`,
+      url: `https://${
+        CONFIG.REGION_TAGLINE
+      }.api.riotgames.com/lol/summoner/v4/summoners/by-name/${encodeURI(
+        SummonerName
+      )}`,
       headers: {
         "X-Riot-Token": CONFIG.RIOT_API_KEY,
       },
@@ -86,7 +90,7 @@ function createRunesMessage(perks, summonerName) {
     });
   });
 
-  return `${summonerName} está usando Arvore principal:: ${
+  return `/me ${summonerName} está usando Arvore principal:: ${
     mainTree.name
   } com ${mainTreePerks.join(" - ")} || Secundaria:: ${
     subTree.name
