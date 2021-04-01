@@ -7,10 +7,12 @@
   "scripts": {
     "build": "pkg ."
   },
+  "devDependencies": {
+    "pkg": "4.5.1"
+  },
   "dependencies": {
     "tmi.js": "1.7.5",
-    "axios": "^0.21.1",
-    "pkg": "4.5.1"
+    "axios": "^0.21.1"
   },
   "pkg": {
     "outputPath": "dist"
