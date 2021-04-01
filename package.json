@@ -1,0 +1,17 @@
+{
+  "name": "runner-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "bot.js",
+  "bin": "bin.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "tmi.js": "1.7.5",
+    "axios": "^0.21.1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
